@@ -1,0 +1,15 @@
+1(3) uses cylindrical coordinate system for inverse kinematics instead of caresian coordinate system and verifies the same.
+1(4) shows in very much detail the forward, inverse kinematics of the model and aan example of a software setup for the control of the delta robot.
+1(5) tells us briefly about the serial and parallel manipulators and compares them too.
+1(6) consists of deep(I did not understand) explanation of inverse dynamic model of parallel robot.
+1(7) tells us in brief how the Delta robot was controlled using ROS.
+1(10) - Delta Parallel Robot — the Story of Success by Ilian Bonev, it tells us briefly about the history of delta robots, their development in academia and industry, different versions of the delta robot.
+1(11) tells us deeply about the mobile robot's path planning algorithms. 
+1(12) is in Swiss language by Raymond Clavel.
+1(13) tells poorly about the forward and inverse kinematics of delta parallel robots.
+1(14) emphasises on Jerk-optimal trajectory planning for Stewart platform in Joint Space.
+1(15) - Modelling and Simulation of Machine Tool Prototype with 6DOF Parallel Mechanism in Matlab / Simulink.
+1(16) tells us briefly about the design of laser cutting machine using delta robot.
+1(17) is an introductory chapter of a book written by Jean Pierre Merlet and Clement Gosselin.
+ 
+

@@ -1,0 +1,164 @@
+Delta robots
+
+Parallel Manipulators are classified as planar, spherical or spatial in accordance with their motion characteristics. Have large loading capacity as the external load is shared by each limb or the constituent serial kinematic chain.
+1) Kinematic Analysis - 
+Method - Inverse Kinematic Analysis
+Requirements/Inputs - Cartesian Space Coordinates(X,Y,Z) of the End-Effector, link(Bicep, forearm, base triangle side, end-effector triangle side) lengths.
+Outputs - Joint Space Coordinates(Theta1, Theta2, Theta3) of the the three revolute base joints, i.e., the rotation angle of the three servo motors.
+Kinematic Constraints(also inputs) due to physical constraints of structural design - Rotation angle limitation of ball(& socket) joints, rotation angle limitation of revolute joints.
+Note :- Velocity and Acceleration Kinematics can also be obtained from the position kinematics by considering time too along with the position kinematics. 
+2) Work Volume Analysis -
+Method - MATLAB Coding
+Algorithm - A cube of some arbitrary size is taken and the inverse kinematic values are calculated for each and every point in the cube. All the points having the proper inverse kinematic values are considered to be a valid point in the work volume and are plotted.
+Requirements/Input - Link(Bicep, forearm, base triangle side, end-effector triangle side) lengths(not optimised) from kinematic analysis, Desired Work Volume
+Outputs - Optimised link(Bicep, forearm, base triangle side, end-effector triangle side) lengths to achieve the desired work volume.
+The optimised link lengths obtained from the work volume analysis will be fixed as the final kinematic parameters. 
+2) Dynamic Analysis -
+Requirements/Inputs - Velocity and Acceleration Kinematics from Kinematic Analysis, Inertia of the system.
+Method - Inverse Dynamic Analysis, here, the inverse velocity kinematics is used to get the highest speed of the input motors, and then the required speed of the motor is obtained, and hence the torque requirements of the motor are also obtained using the inetria of the system.
+Outputs - Motor Torque, Motor Speed.
+3) Mechanical Design - 
+Method - 3D CAD using a 3D CAD Software.
+Requirements/Inputs - Optimised link(Bicep, forearm, base triangle side, end-effector triangle side) lengths obtained from work volume analysis, spring specifications, ball joint specifications and kinematic limitations(constraints), revolute joint specifications and kinematic limitations(constraints), material of each object
+Output - 3D CAD Model
+4) Strucutural Analysis - 
+Method - Stress and Deformation 3D Structural Analysis using an Analysis Software.
+Requirements/Inputs - 3D CAD model obtained from Mechanical design, kinematic constraints, materials of the structural parts, input load.
+5) Electronics -
+Method - Soft PLC(provided by industr) with the control alogorithm program(by programming the PLC) for functioning of the robot, User interactive HMI/& teach pendant for user control(input and real time information of the robot).
+6) Manufacturing /& Outsourcing -
+Mechanical components - Can be fabricated within the industry, but materials must be chosen(based on the design) and procured from outside the industry for this.
+Elecrical - Servo Motors and drives can be optimally chosen and procured from outside the industry
+Electronics - Soft PLC can be procured from outside the industry and programmed within the industry
+7) Real time simulation -
+Requirements/Input - Testing conditions(payload), manufactured Delta robot
+Output - Final results
+ 
+
+
+
+
+
+
+A catalogue of a large variety of parallel configurations can be found in the book by Merlet and at his internet page.
+
+
+As a set of disadvantages we can cite their reduced working area and their number of mechanical singularities.
+Variants of Delta Robot - TRiaglide and Linapod
+
+
+End effector - a platform(principle of serial manipulators)
+Serial manipulator's first design called the Stewart Platform or Gough-Stewart Platform.
+Delta robot also seen as a spatial mechanism of a four bar mechanism.
+
+ 10th paper is very good for kinematic modelling of delta robots
+1. 
+Delta Robots - 3RRR Mechanisms.
+End-Effector - n degrees of freedom if n number of actuators are used.
+Based on parallelogram principle - The output link remains in fixed orientation relative to the input link.
+In cases of delta robots, the inverse kinematic analysis is more popular than forward kinematic analysis.
+
+2. 
+Parallel robots provide more accuracy and dynamic response(speed and stiffness) than serial robots. But comparatively, it is difficult to determine the dimension of the structure and workspace for the mechanism.
+Kinematic Optimal design - Preferably used for the design and analysis of delta manipulators where there is a strong dependence on geometric performance and their parameters.
+Aim - Design and Analysis of Delta manipulators
+Methodolgy - Kinematic Optimal Design. Inverse Kinematic Problem and Jacobian Matrix for analysis, design study of a class of parallel robot to come to conclusion with a set of parameters that result in good performance in terms of the performance indexes : workspace capabilities and dexterity.
+High velocity, high precision, high stiffness, high load/weight ratio and low moving inertia.
+Performance indices - known in serial robot's field.
+Performance indices for Optimal Kinematic Design of Delta Robot are - 
+1) Global Conditioning Index - Calculation over a kind of workspace of the robot
+2) Jacobian Matrix's Condition Number
+
+NOTE :- JACOBIAN MATRIX - A matrix of partial derivatives. It consists of all partial derivatives of a vector function. Jacobian is the determinant of the Jacobian Matrix.
+
+Inverse Kinematic - cannot get what is F.
+How is the equation for condition number framed ?
+
+Cannot understand the robot's workspace plot.
+Cannot understand what is deterity index.
+Cannot understand what is || ||. What is A1 and A2 of the isosceles triangle ?
+
+3.
+Aim is to design a delta robot with payload of 1Kg, working at 120 cycles per minute in a work volume of 400x300x200 m^3.
+Kinematic modeling of delta robot to achieve the above specifications - calculations of lengths of biceps and arms based on workspace volume. Dynamic modeling of delta robot based on maximum acceleration requirements and inertia of system - calculation of motor torque and speed.
+Mechanical structure analysis to cehck whether the designed robot is viable in the work volume specified. 
+US 20110259138 A1 is the patent for the special type of ball joint used in the delta robot. It provides a method for friction less motion between the arms and about the type of material used for the socket.
+Pradya Prempraneerach - Concept between workspace generation of delta robot.
+Excel Ultralite Carbon Fiber Tubes Datasheet - Material properties about the carbon fiber tubes used for the robot arms.
+Fag Databook - Selection of various mechanical components in the system including angular contact ball bearings, lock nuts and lock washers.
+Misumi Data book - selection of the spring that holds the forearms together.
+Comparison with :-
+Fanuc M-1iA Series_171
+Asyril_ROBOT-POC-01_Datasheet_E - For a miniature delta robot made by Asyril.
+DeltaRobot-R6Y3+InstallManual - For Omron Delta Robot.
+The parallelograms of the three arms of the delta robot restrict the end effector to be always parallel in orientation with the base.
+The fourth motor is used to change the orientation of the end effector.
+Robot Kinematics = Forward kinematics + Inverse Kinematics
+Robot Kinematics - relationship between the kinematic chains and the position, velocity, and acceleration of the links.
+Robot Parameters = Joint Space parameters + Cartesian Space parameters
+The joint space parameters consists of the angle of rotation or translational movement of the joints and the Cartesian space parameters involve the positions of the links and joints in the three dimensional space rendered by a fixed reference frame.
+Forward Kinematics - Computation of the cartesian space parameters when the joint space parameters are specified.
+Inverse kinematics - Computation of the joint space parameters when the Cartesian space parameters are specified.
+Physical Constraints - Mechanical constraints in the structure of the robot which dont allow the ball joints to rotate through their maximum limit.
+Revolute Joint Constraint - Limited to their negative direction of rotation.
+Ball joint constraint - Delta robots are usually equipped with twelve ball joints and each ball joint is limited within its maximum pivot angle range, this in turn limits the maximum extent of movement of the robot arms and also the maximum reach of the robot system as a whole
+Work Volume - maximum reach diameter of the delta robot.
+Here, inverse kinematic modelling is used.
+Here in this design process, the work volume was decided to be 600mm and correspondingly the other optimum paramters were found out.
+Front view, top view and the isometric views of the work volume were generated using MATLAB.
+Algorithm for Workvolume Analysis - A cube of some arbitrary size is taken and the inverse kinematic values are calculated for each and every point in the cube. All the points having the proper inverse kinematic values are considered to be a valid point in the work volume and are plotted.
+Dynamic Modelling - The forward dynamic model is used to arrive at the end effectors motion parameters from the motor torque provided, whereas the inverse dynamic model is used to arrive at the motor torque requirements from the end effector’s Cartesian velocity, Cartesian acceleration and the motion profile considered for system.
+Here, inverse dynamic modelling is used.
+triangular velocity profile is used here.
+DID NOT UNDERSTAND THE TABLE 2 COMPLETELY - WHAT ARE THE VALUES AND HOW DID YOU GET THE VALUES AND HOW DID YOU GET MAX RPM FROM THOSE VALUES.
+Bicep
+Forearm
+Motor Torque
+Motor Speed
+Work Volume Requirement and dynamic parameters
+Maximum Acceleration requirements and inertia of system
+Robot Structures - Links and joints
+Ball and socket joint in Delta robots - Allows the forearms of the robot to swing sideways, usually there are 12 ball joints in delta robots. 
+Velocity and acceleration kinematics is required to achieve the dynamic model.
+This paper also stresses on the mechanical design of the robot.
+The various potential failure modes were identified by carrying out Design Failure mode and Effect Analysis(DFMEA).
+
+4.
+Pose - Position and orientation of the end effector
+Robot represents an integrated mechatronic system consisting of three subsystems: sensorial, control and decision-making, and actuation subsystem. The sensorial subsystem establishes a feedback with the environment. The control and decision-making subsystem represents the 'thinking' centre of the robot, its 'brain'. Together, the sensorial and control subsystems make up a cognitive system. Finally, the actuation subsystem is used to affect the environment, making such an impact on it that the environment changes.
+
+This paper tells us how the forward and inverse kinematic sof delta robots are formulated using the geometrical approach.
+
+5 - Designing delta robot has been separated to 4 main parts, Forward Kinematics, Inverse Kinematics, mechanical design, and Electrical design.
+
+6 - 
+In this article, we employ kinematic analysis for the Delta robot to derive the velocity of the end-effector in terms of the angular joint velocities, thus yielding the Jacobian matrices. Setting their determinants to zero, several undesirable postures of the manipulator have been extracted. The analysis of the inverse Jacobian matrix reveals that singularities are encountered when the limbs belonging to the same kinematic chain lie in a plane.
+The traditional Jacobian matrix provides a transformation from the velocity of the end-effector in Cartesian space to the actuated joint velocities. When a manipulator is at a singular position, the Jacobian matrix is singular too.
+
+
+7 - 
+
+
+8 - 
+Delta’s workspace is symmetrical with respect to the base-plane. However, only bottom half of this workspace can be utilized in practice. NUWAR’s workspace is not symmetric, but the useful bottom half is larger than that of the Delta. Close examination of the shape of the NUWAR’s workspace reveals that it has a larger cross section in the region closer to the base plane (z.20.35 m), but a smaller cross section further from the base-plane (z,20.35 m), in comparison to the workspace of the Delta, Fig. 3c. Hence, this robot would be more suitable for applications where a larger workspace is required close to the base-plane, which is typically the case in the light duty pick-and-place applications.
+Replacement of ball joints by pin joints.
+
+9 - Forward and Inverse Kinematics of Delta Robot pg 447 of book
+
+Conformal Geometric Algebra (CGA) is a specific 5D representation of 3D space that embeds geometric primitives and conformal transformations as elements of the same algebra.
+
+
+10 - IMP IMP IMP IMP IMP 10 -   A book, not a paper, very very very good for complete kinematic modelling of delta robots. 
+
+
+The Delta Robot has 4-degrees-of-freedom (dof), 3-dof for XYZ translation, plus a fourth inner leg to control a single rotational freedom at the end-effector platform (about the axis perpendicular to the platform). Delta robots canbe prismatic input or revolute input delta robots. the 3-dof Delta Robot is composed of three identical RUU legs in parallel between the top fixed base and the bottom moving end-effector platform. The top revolute joints are actuated (indicated by the underbar) via base-fixed rotational actuators. The universal (U) joints are implemented using three non-collocated revolute (R) joints (two parallel and one perpendicular, six places).
+Kutzbach DOF formula fails for delta robots and returns -9DOF which is incorrect as the formula doesnt know anything about special geometry as present in delta robots.
+the IPK solution for the Delta Robot is not trivial, but can be found analytically. Two i  solutions result from the  in the quadratic formula. Both are correct since there are two valid
+solutions – knee left and knee right. This yields two IPK branch solutions for each leg of the Delta Robot, for a total of 8 possible valid solutions. Generally the one solution with all knees kinked out instead of in will be chosen.
+
+
+11 - Paper on Kinematic error analysis of Delta robots
+
+Most studies consider the dimension error, clearance error, joint error, motion error, parallelism error and driving error. This paper focuses on the parallelism error.
+After deriving the forward and inverse kinematics, this article analyses the non-parallelism of the driven mechanism on motion error of the robot. Motion accuracy is the key indicator to evaluate the performance of robots. With the wide application of parallel robots, people have higher and higher accuracy demand.
+
